@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veterinaria La Mary</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css?v=5">
 
     <script src="./sesion.js"></script>
     <script>
-    if (!estaLogueado()) window.location.replace('./login.html');
+        if (!estaLogueado()) window.location.replace('./login.html');
     </script>
     <script defer src="./panelAdmin.js"></script>
 </head>
@@ -23,13 +25,9 @@
                 <a href="index.html" class="navbar-brand logo">
                     🐾 Veterinaria La Mary
                 </a>
-            
-                <button class="navbar-toggler" type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#menuPrincipal"
-                        aria-controls="menuPrincipal"
-                        aria-expanded="false"
-                        aria-label="Abrir menú">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="menuPrincipal">
@@ -42,7 +40,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="contacto.html" class="nav-link">Contacto</a>
-                        </li>   
+                        </li>
                         <li class="nav-item">
                             <a href="panelAdmin.html" class="nav-link active">Panel</a>
                         </li>
@@ -58,64 +56,67 @@
 
     <!-- PORTADA -->
     <main>
-<div class="container my-5 panel">
-        <h2 class="text-center mb-2">Hola, <span id="nombre-usuario"></span></h2>
-        
-        <!-- Fila con clases de Bootstrap 5 para columnas automáticas y espaciado (g-4) -->
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-            
-            <!-- Card 1 -->
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="panel-mascotas.jpg" class="card-img-top" alt="Perro y gato">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Mascotas</h5>
-                        <p class="card-text flex-grow-1">Ver/editar mascotas.</p>
-                        <span class="badge text-bg-secondary align-self-center fs-6 mb-md-3" id="total-mascotas">0 registradas</span>
-                        <a href="mascotas.html" class="btn btn-primary mt-auto">Mascotas</a>
-                    </div>  
-                </div>
-            </div>
+        <div class="container my-5 panel">
+            <h2 class="text-center mb-2">Hola, <span id="nombre-usuario"></span></h2>
 
-            <!-- Card 2 -->
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="panel-veterinarios.jpg" class="card-img-top" alt="Veterinaria atendiendo a un perro">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Veterinarios</h5>
-                        <p class="card-text flex-grow-1">Ver/editar veterinarios.</p>
-                        <a href="veterinarios.html" class="btn btn-primary mt-auto">Veterinarios</a>
+            <!-- Fila con clases de Bootstrap 5 para columnas automáticas y espaciado (g-4) -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+                <!-- Card 1 -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="panel-mascotas.jpg" class="card-img-top" alt="Perro y gato">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Mascotas</h5>
+                            <p class="card-text flex-grow-1">Ver/editar mascotas.</p>
+                            <span class="badge text-bg-secondary align-self-center fs-6 mb-md-3" id="total-mascotas">0
+                                registradas</span>
+                            <a href="mascotas.html" class="btn btn-primary mt-auto">Mascotas</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 3 -->
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="panel-turnos.jpg" class="card-img-top" alt="Agenda de turnos">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Turnos</h5>
-                        <p class="card-text flex-grow-1">Ver/editar turnos.</p>
-                        <a href="turnos.html" class="btn btn-primary mt-auto">Turnos</a>    
+                <!-- Card 2 -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="panel-veterinarios.jpg" class="card-img-top" alt="Veterinaria atendiendo a un perro">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Veterinarios</h5>
+                            <p class="card-text flex-grow-1">Ver/editar veterinarios.</p>
+                            <span class="badge text-bg-secondary align-self-center fs-6 mb-md-3"
+                                id="total-veterinarios">0 registrados</span>
+                            <a href="veterinarios.html" class="btn btn-primary mt-auto">Veterinarios</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 4 -->
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="panel-historia.jpg" class="card-img-top" alt="Historia clínica de una mascota">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Historia Clínica</h5>
-                        <p class="card-text flex-grow-1">Ver/editar historia clínica de las mascotas.</p>
-                        <a href="historia-clinica.html" class="btn btn-primary mt-auto">Historia Clínica</a>
+                <!-- Card 3 -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="panel-turnos.jpg" class="card-img-top" alt="Agenda de turnos">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Turnos</h5>
+                            <p class="card-text flex-grow-1">Ver/editar turnos.</p>
+                            <a href="turnos.html" class="btn btn-primary mt-auto">Turnos</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Card 4 -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="panel-historia.jpg" class="card-img-top" alt="Historia clínica de una mascota">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Historia Clínica</h5>
+                            <p class="card-text flex-grow-1">Ver/editar historia clínica de las mascotas.</p>
+                            <a href="historia-clinica.html" class="btn btn-primary mt-auto">Historia Clínica</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
-    </main> 
+    </main>
 
 
 
@@ -140,6 +141,9 @@
             <p>© 2026 Veterinaria La Mary. Todos los derechos reservados.</p>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

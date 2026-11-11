@@ -7,6 +7,9 @@ const inputFecha = document.getElementById("fecha");
 const aviso = document.getElementById("aviso");
 const mensajeError = document.getElementById("mensajeError");
 const btnGuardar = document.getElementById("btn-guardar");
+const filtroVeterinario = document.getElementById("filtroVeterinario");
+const filtroFecha = document.getElementById("filtroFecha");
+const btnLimpiar = document.getElementById("btn-limpiar");
 
 function leer(clave) {
     return JSON.parse(localStorage.getItem(clave)) || [];
@@ -57,6 +60,15 @@ function cargarSelects() {
             `<option value="${v.idVeterinario}">${escapar(v.nombre)} - ${escapar(v.especializacion)}</option>`;
     });
 
+        // Select del filtro (conserva la selección actual)
+    const seleccionado = filtroVeterinario.value;
+    filtroVeterinario.innerHTML = '<option value="">Todos los veterinarios</option>';
+    veterinarios.forEach(function (v) {
+        filtroVeterinario.innerHTML +=
+            `<option value="${v.idVeterinario}">${escapar(v.nombre)}</option>`;
+    });
+    filtroVeterinario.value = seleccionado;
+
     // Aviso si falta cargar datos previos
     const faltan = [];
     if (mascotas.length === 0) faltan.push("mascotas");
@@ -72,17 +84,37 @@ function cargarSelects() {
     }
 }
 
-function mostrarTurnos() {
-    const turnos = leer("turnos");
-    const mascotas = leer("mascotas");
-    const veterinarios = leer("veterinarios");
+function turnosFiltrados() {
+    const idVet = filtroVeterinario.value;
+    const fecha = filtroFecha.value;
 
-    // Ordenados por fecha y hora
+    let turnos = leer("turnos");
+
+    if (idVet !== "") {
+        turnos = turnos.filter(function (t) { return t.idVeterinario === idVet; });
+    }
+    if (fecha !== "") {
+        turnos = turnos.filter(function (t) { return t.fecha === fecha; });
+    }
+
     turnos.sort(function (a, b) {
         return (a.fecha + a.hora).localeCompare(b.fecha + b.hora);
     });
 
+    return turnos;
+}
+
+function mostrarTurnos() {
+    const turnos = turnosFiltrados();
+    const mascotas = leer("mascotas");
+    const veterinarios = leer("veterinarios");
+
     tablaTurnos.innerHTML = "";
+
+    if (turnos.length === 0) {
+        tablaTurnos.innerHTML =
+            '<tr><td colspan="6" class="text-center text-muted">No hay turnos para mostrar.</td></tr>';
+    }
 
     turnos.forEach(function (turno) {
         const mascota = mascotas.find(function (m) { return m.idMascota === turno.idMascota; });
@@ -159,7 +191,17 @@ tablaTurnos.addEventListener("click", function (evento) {
     }
 });
 
+filtroVeterinario.addEventListener("change", mostrarTurnos);
+filtroFecha.addEventListener("change", mostrarTurnos);
+
+btnLimpiar.addEventListener("click", function () {
+    filtroVeterinario.value = "";
+    filtroFecha.value = "";
+    mostrarTurnos();
+});
+
 // Inicio
 inputFecha.min = fechaHoy();
 cargarSelects();
 mostrarTurnos();
+
