@@ -469,3 +469,8 @@ a {
         height: 350px;
     }
 }
+
+.panel .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}

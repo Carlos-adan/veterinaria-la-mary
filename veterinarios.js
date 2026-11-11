@@ -79,6 +79,26 @@
         if (boton.classList.contains("btn-danger")) {
             const id = boton.dataset.id;
 
+                    const turnos = JSON.parse(localStorage.getItem("turnos")) || [];
+            const tieneTurnos = turnos.some(function (t) {
+                return t.idVeterinario === id;
+            });
+
+            if (tieneTurnos) {
+                alert("No se puede eliminar: este veterinario tiene turnos asignados. Eliminá primero sus turnos.");
+                return;
+            }
+
+                    const historias = JSON.parse(localStorage.getItem("historias")) || [];
+        const tieneHistorias = historias.some(function (h) {
+            return h.idMascota === id;
+        });
+
+        if (tieneHistorias) {
+            alert("No se puede eliminar: esta mascota tiene historia clínica registrada.");
+            return;
+        }
+
             const confirmar = confirm("¿Seguro que querés eliminar este veterinario?");
 
             if (confirmar) {
