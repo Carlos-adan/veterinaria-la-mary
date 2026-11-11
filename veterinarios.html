@@ -94,7 +94,7 @@
                 <article class="col-12 col-lg-5">
 
                     <form class="d-flex flex-column gap-3 p-4 bg-body-tertiary rounded-4" id="form-veterinario">
-                        <h3 class="fs-4">Dar de alta</h3>
+                        <h3 class="fs-4" id="titulo-form">Dar de alta</h3>
 
                         <div>
                             <label for="matricula" class="form-label">Matrícula</label>
@@ -121,7 +121,8 @@
                                 class="form-control" required>
                         </div>
 
-                        <button class="boton boton-principal w-100" type="submit">Agregar veterinario</button>
+                        <button class="boton boton-principal w-100" type="submit" id="btn-guardar">Agregar veterinario</button>
+                        <button class="btn btn-outline-danger w-100 d-none" type="button" id="btn-cancelar">Cancelar edición</button>
                     </form>
                 </article>
             </div>

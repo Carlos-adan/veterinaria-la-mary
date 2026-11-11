@@ -5,7 +5,19 @@ if (!estaLogueado()) {
 const formMascota = document.getElementById("form-mascota");
 const tablaMascotas = document.getElementById("tabla-mascotas");
 const total = document.getElementById("total");
+const tituloForm = document.getElementById("titulo-form");
+const btnGuardar = document.getElementById("btn-guardar");
+const btnCancelar = document.getElementById("btn-cancelar");
 let idEditando = null;
+
+// Deja el formulario en modo "alta" (título, botón principal y botón cancelar)
+function volverAModoAlta() {
+    idEditando = null;
+    formMascota.reset();
+    tituloForm.textContent = "Dar de alta";
+    btnGuardar.textContent = "Agregar mascota";
+    btnCancelar.classList.add("d-none");
+}
 
 function mostrarMascotas() {
     // 1. leer el array guardado
@@ -70,13 +82,15 @@ formMascota.addEventListener("submit", function (evento) {
             peso: peso
         };
 
-        idEditando = null;
     }
 
     localStorage.setItem("mascotas", JSON.stringify(mascotas));
     mostrarMascotas();
-    formMascota.reset();
+    volverAModoAlta();
 });
+
+// Cancelar la edición: se descartan los cambios y el formulario vuelve a modo alta
+btnCancelar.addEventListener("click", volverAModoAlta);
 
 mostrarMascotas();
 
@@ -120,7 +134,12 @@ tablaMascotas.addEventListener("click", function (evento) {
             // 3. guardar el array nuevo (igual que en el alta, pero con "filtradas")
             localStorage.setItem("mascotas", JSON.stringify(filtradas));
 
-            // 4. redibujar la tabla
+            // 4. si justo se estaba editando esta mascota, salir del modo edición
+            if (idEditando === id) {
+                volverAModoAlta();
+            }
+
+            // 5. redibujar la tabla
             mostrarMascotas();
         }
     }
@@ -144,7 +163,10 @@ tablaMascotas.addEventListener("click", function (evento) {
         document.getElementById("edad").value = mascota.edad;
         document.getElementById("peso").value = mascota.peso;
 
-        // 3. recordar que estamos editando
+        // 3. recordar que estamos editando y cambiar los textos del formulario
         idEditando = id;
+        tituloForm.textContent = "Editar mascota";
+        btnGuardar.textContent = "Guardar cambios";
+        btnCancelar.classList.remove("d-none");
     }
 });
