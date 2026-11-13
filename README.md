@@ -13,7 +13,7 @@ Introducción al Desarrollo Web - Tecnicatura Universitaria en Desarrollo Web - 
 
 ## Video de exposición
 
-[Ver video](PEGAR-AQUÍ-EL-LINK-DE-YOUTUBE)
+[Ver video](https://youtu.be/EUEiz7k8zM0)
 
 ## Descripción
 
